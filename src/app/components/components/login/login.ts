@@ -13,7 +13,7 @@ export class Login {
   email: string = '';
   senha: string = '';
 
-  constructor(private router: Router) {} // Injeta o roteador no componente
+  constructor(private router: Router) {} 
 
   onSubmit() {
     if (!this.email) {
@@ -21,9 +21,8 @@ export class Login {
       return;
     }
 
-    //  se tiver um e-mail válido,redireciona
     if (this.email.includes('@')) {
-      this.router.navigate(['/home']);  // muda para a rota "home"
+      this.router.navigate(['/home']);  
     } else {
       alert('E-mail inválido!');
     }
