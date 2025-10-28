@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { Header } from '../header/header';
-import { Login } from "../login/login";
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [Header, Login],
-  providers: [],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
