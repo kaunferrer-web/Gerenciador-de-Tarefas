@@ -20,7 +20,6 @@ export class Login {
       alert('Digite um e-mail!');
       return;
     }
-
     if (this.email.includes('@')) {
       this.router.navigate(['/home']);  
     } else {
