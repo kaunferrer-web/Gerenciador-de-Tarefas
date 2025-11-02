@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+:host{
+    display: flex;
+    height: 100%;
+        /* definindo quem é pai e quem é filho*/
+        .left-side {
+            flex: 3;
+            background-color: black
+        }
+        .rigth-side{
+            flex: 1;
+        }
+}
+body{
+    height: 100vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
