@@ -1,29 +1,23 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [],
-  standalone:true, 
+  standalone:true,
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css']
 })
-export class Login {
+export class LoginComponent {
+  mostrandoLogin: boolean = true;
 
-  email: string = '';
-  senha: string = '';
+  alternarFormulario(): void {
+    this.mostrandoLogin = !this.mostrandoLogin;
+  }
 
-  constructor(private router: Router) {} 
+  fazerLogin(): void {
+    console.log('Login realizado');
+  }
 
-  onSubmit() {
-    if (!this.email) {
-      alert('Digite um e-mail!');
-      return;
-    }
-    if (this.email.includes('@')) {
-      this.router.navigate(['/home']);  
-    } else {
-      alert('E-mail inválido!');
-    }
+  fazerCadastro(): void {
+    console.log('Cadastro realizado');
   }
 }

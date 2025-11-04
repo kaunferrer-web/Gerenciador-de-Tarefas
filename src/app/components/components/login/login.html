@@ -1,15 +1,33 @@
-<div id="containerPai">
-    <article>
-        
-        <section>
-            <h1>Login</h1>
-            <form (ngSubimt)="onSubmit()">
-                <input [(ngMOdel)]="email" type="email" placeholder="E-mail:" required>
-                <input [(ngModel)]="senha" type="password" placeholder="Senha:">
-                <a id="" href="#">esqueci a senha</a><br>
-                <input id="bntEntrar" type="submit" value="Entrar" class="submit">
-            </form>
-        </section>
-    </article>
-</div>
+<div class="containerPai" [class.containerClicado]="!mostrandoLogin">
+  
+  <!-- Formulário de Login -->
+  <div class="formulario form-login">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Senha">
+    <a href="#" class="rec-senha">Esqueceu a senha?</a>
+    <button class="btn-entrar" (click)="fazerLogin()">Entrar</button>
+  </div>
 
+  <!-- Formulário de Cadastro -->
+  <div class="formulario form-cadastro">
+    <h2>Cadastro</h2>
+    <input type="text" placeholder="Nome">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Senha">
+    <input type="password" placeholder="Confirmar senha">
+    <button class="btn-entrar" (click)="fazerCadastro()">Cadastrar</button>
+  </div>
+
+  <!-- Painel Roxo -->
+  <div class="painel-roxo">
+    <div id="painel-texto">
+      <h2>{{ mostrandoLogin ? 'Ainda não tem conta?' : 'Já tem conta?' }}</h2>
+      <p>{{ mostrandoLogin ? 'Cadastre-se agora!' : 'Faça login!' }}</p>
+    </div>
+    <button class="btn-roxo" (click)="alternarFormulario()">
+      {{ mostrandoLogin ? 'Cadastre-se' : 'Entrar' }}
+    </button>
+  </div>
+
+</div>
