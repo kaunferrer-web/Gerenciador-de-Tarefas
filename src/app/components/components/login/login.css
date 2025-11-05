@@ -48,6 +48,7 @@
 h2 {
   margin-bottom: 20px;
   color: #3B0270;
+  font-size: 30px;
 }
 
 input {
@@ -56,7 +57,7 @@ input {
   margin: 10px 0;
   background: none;
   border: none;
-  border-bottom: 1px solid #3B0270;
+  border-bottom: 1px solid #6F00FF;
   outline: none;
 }
 
@@ -86,10 +87,14 @@ button {
 }
 
 .rec-senha {
-  color: #3B0270;
+  color: #6F00FF;
   text-decoration: none;
   margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 14px;
+  width: 400px;
+  text-align: left;
+  font-size: 12px;
 }
 
 .rec-senha:hover {
@@ -110,7 +115,7 @@ button {
 
 .painel-roxo {
   position: absolute;
-  box-shadow: 0 0 10px 2px #E9B3FB;
+  box-shadow: 0 0 10px 5px #E9B3FB;
   width: 50%;
   height: 100%;
   background: linear-gradient(#3B0270, #6F00FF);
