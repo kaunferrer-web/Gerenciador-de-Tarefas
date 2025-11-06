@@ -3,8 +3,8 @@
   <!-- Formulário de Login -->
   <div class="formulario form-login">
     <h2>Login</h2>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Senha">
+    <input type="email" placeholder="Email" [(ngModel)] = "email">
+    <input type="password" placeholder="Senha" [(ngModel)] = "senha">
     <a href="#" class="rec-senha">Esqueceu a senha?</a>
     <button class="btn-entrar" (click)="fazerLogin()">Entrar</button>
   </div>
