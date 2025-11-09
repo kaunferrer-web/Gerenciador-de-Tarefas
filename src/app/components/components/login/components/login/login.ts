@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-
-
+import { FormsModule,} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone:true,
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
@@ -15,8 +17,9 @@ export class LoginComponent {
   senha: string = "";
   confirmaSenha: string = "";
 
+  constructor(private router:Router){}
+
   mostrandoLogin: boolean = true;
-  router: any;
 
   alternarFormulario(): void {
     this.mostrandoLogin = !this.mostrandoLogin;
@@ -24,53 +27,56 @@ export class LoginComponent {
 
   //ademir: condições do login e cadastro //
 
-  fazerLogin(): void {
-    const usuarioSalvo = localStorage.getItem('usuario');
+  fazerLogin() {
+  const usuarioSalvo = localStorage.getItem('usuario');
 
-    if (!usuarioSalvo) {
-      alert('Nenhum usuario cadastrado!!');
-      return;
-    }
-    //para transformar o usuario que vai ser lido como txt em js//
+  if (usuarioSalvo) {
+    // para transformar o usuario que vai ser lido como txt em js //
     const usuario = JSON.parse(usuarioSalvo);
 
-    if (this.email === usuario.email && this.senha === usuario.senha) {
-      alert('Seja bem vindo,' + usuario)      
+    if (usuario.email === this.email && usuario.senha === this.senha) {
+      alert("SEJA BEM VINDO!!");
+      this.router.navigate(['/home']);
+      return;
+    } else {
+      alert('Email ou senha incorretos!');
+      return;
     }
-    else {
-      alert('E-MAIL OU SENHA INCORRETA');
-    }
+  } else {
+    alert('Nenhum usuário cadastrado!');
+    return;
   }
+}
 
 
-  fazerCadastro(): void {
-    if (this.nome || this.email || this.senha || this.confirmaSenha) {
-      alert("Preencha todas as informações")      
-    }
 
-    if (!this.email.includes('@') || this.email.includes('.com')){
-      alert("INFORME UM E-MAIL VALIDO, Ex: algo@gmail.com")
+  fazerCadastro() {
+    //Ademir: nao tava funcionando por conta da logica nas condicionais//
+    if (!this.nome || !this.email || !this.senha || !this.confirmaSenha) {
+      alert("Preencha todas as informações");
+      return;
     }
-    if (this.senha !== this.confirmaSenha) {
-      alert("AS SENHAS NÃO ESÃO IGUAIS");     
+    if (!this.email.includes('@') || !this.email.includes('.com')){
+      alert("INFORME UM E-MAIL VALIDO, Ex: algo@gmail.com");
+      return;
     }
+    if(this.senha !== this.confirmaSenha) {
+      alert("AS SENHAS NÃO ESTÃO IGUAIS");
+      return;
+    }
+    
     const usuario ={
       nome: this.nome,
       email: this.email,
       senha: this.senha
     };
-    //para salvar no localStorage
-    localStorage.setItem('usuario', JSON.stringify(usuario));
-    alert("Cadastro confirmado. SEJA BEM VINDO!!")
-
+    //ademir: para salvar no localStorage
+    if(this.email == this.email ){
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+      alert("Cadastro confirmado!! Seja bem vindo, "+ this.nome)
+      return;
+    }
     this.nome = this.email = this.senha = this.confirmaSenha = '';
     this.mostrandoLogin = true;
-
-    if (this.email === usuario.email && this.senha === usuario.senha) {
-      alert(`Seja bem-vindo, ` + usuario);
-      this.router.navigate(['/home']);
-    } else {
-      alert('E-mail ou senha incorretos!');
-  }
 }
 }

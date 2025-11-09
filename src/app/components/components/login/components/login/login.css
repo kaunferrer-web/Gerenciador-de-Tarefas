@@ -76,8 +76,14 @@ button {
 
 .btn-entrar {
   background-color: #6F00FF;
-  color: white;
+  color: white !important;
   width: 400px;
+}
+
+.btn-entrar a:visited,
+.btn-entrar a:hover,
+.btn-entrar a:active {
+  color: white !important;
 }
 
 .btn-entrar:hover {
