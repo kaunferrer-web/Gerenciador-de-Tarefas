@@ -20,7 +20,7 @@ export class LoginComponent {
   constructor(private router:Router){}
 
   mostrandoLogin: boolean = true;
-
+  
   alternarFormulario(): void {
     this.mostrandoLogin = !this.mostrandoLogin;
   }
@@ -51,6 +51,7 @@ export class LoginComponent {
 
 
   fazerCadastro() {
+    
     //Ademir: nao tava funcionando por conta da logica nas condicionais//
     if (!this.nome || !this.email || !this.senha || !this.confirmaSenha) {
       alert("Preencha todas as informações");
@@ -64,19 +65,21 @@ export class LoginComponent {
       alert("AS SENHAS NÃO ESTÃO IGUAIS");
       return;
     }
-    
     const usuario ={
       nome: this.nome,
       email: this.email,
       senha: this.senha
     };
     //ademir: para salvar no localStorage
-    if(this.email == this.email ){
-      localStorage.setItem('usuario', JSON.stringify(usuario));
-      alert("Cadastro confirmado!! Seja bem vindo, "+ this.nome)
-      return;
-    }
-    this.nome = this.email = this.senha = this.confirmaSenha = '';
+    
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+    alert("Cadastro confirmado!! Seja bem vindo, "+ this.nome)
+      
+    this.nome = '';
+    this.email = '';
+    this.senha = '';
+    this.confirmaSenha = '';
+
     this.mostrandoLogin = true;
 }
 }

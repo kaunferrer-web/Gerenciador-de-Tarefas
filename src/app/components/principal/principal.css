@@ -1,0 +1,203 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container-principal {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.barra-lateral{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+    width: 300px;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+li {
+    list-style: none;
+    margin-top: 20px;
+
+}
+a{
+    display: block;
+    text-decoration: none;
+    width: 200px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: box-shadow ease 0.5 ;
+}
+a:hover{
+    color: aliceblue;
+    background: linear-gradient(to right,#6F00FF,#E9B3FB, white)left;
+    box-shadow: 0 0 5px 2px hsl(284, 45%, 84%);
+}
+.logo-marca{
+    font-family: Arial, Helvetica, sans-serif ;
+    color: #6F00FF;
+    text-align: center;
+    width: 100%;
+    padding: 50px;
+    border-bottom:1px solid #e4e4e4;
+}
+.chat{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 150px;
+    width: 200px;
+    border-radius: 10px;
+    background: linear-gradient(#c395ff,#E9B3FB);
+    padding:20px;
+    border: 1px solid #e4e4e4;
+
+}
+.chat h3{
+    color: #ffffff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+
+}
+.btn-chat{
+    width: 95%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: #fdf8ff;
+    margin-top: 15px;
+    color: #6F00FF;
+}
+.caixa-chat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border-top: 1px solid#efefef;
+    width: 100%;
+}
+.chat p{
+    color: #faeaff;
+    font-size: 10px;
+}
+main{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#ffffff, hsl(273, 100%, 98%));
+    width: 600px;
+    border-radius: 20px;
+}
+
+.painel-task{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    height: 95%;
+    max-height: 90vh;
+}
+.pai-list{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-height: 600px; /*  altura fixa ou máxima */
+    overflow-y: auto;  /* ativa scroll */
+    scrollbar-width: thin; 
+}
+.lista{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    width: 600px;
+    height: 150px;
+    background: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #6F00FF;
+    box-shadow: 0;
+    transition: box-shadow ease 0.5s;
+
+}
+.lista:hover{
+    box-shadow: 0 0 10px 1px #c395ff;
+}
+#dnt-list{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 50px;
+}
+.editarBotao{
+    color: #c395ff;
+    border: none;
+    box-shadow:  0;
+    transition: box-shadow ease 0.5s;
+    border-radius: 10px;
+    padding: 10px;
+}
+.editarBotao:hover{
+    box-shadow:  0 0 10px 1px #6F00FF;
+}
+.removerBotao{
+    color: #c395ff;
+    border: none;
+    box-shadow:  0;
+    transition: box-shadow ease 0.5s;
+    border-radius: 10px;
+    padding: 10px;
+}
+.removerBotao:hover{
+    box-shadow:  0 0 10px 1px #6F00FF;
+}
+.criacao{
+    border-radius: 20px;
+    height: 50px;
+    width: 75%;
+    border: none;
+    transition: background 0.5s ease;
+    transition: padding ease-in 0.8s;
+    background: linear-gradient(to left,#6F00FF,#c395ff);
+    color: #e4e4e4;
+}
+.criacao:hover{
+    background: linear-gradient(to right,#6F00FF,#c395ff);;
+}
+.lateral-dire{
+    display: flex;
+    width: 300px;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.pai-calendar{
+    border-radius: 10px;
+    border: 1px solid red;
+    background: linear-gradient(#dec2e8, #fdf8ff);
+    width: 200px;
+    height: 200px;
+}
+.pai-produti{
+    border-radius: 10px;
+    background: linear-gradient(#dec2e8, #fdf8ff);
+    width: 200px;
+    height: 200px;
+}

@@ -13,10 +13,11 @@
   <!-- Formulário de Cadastro -->
   <div class="formulario form-cadastro">
     <h2>Cadastro</h2>
-    <input type="text" placeholder="Nome">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Senha">
-    <input type="password" placeholder="Confirmar senha">
+    <img src="" alt="">
+    <input type="text" placeholder="Nome" [(ngModel)]="nome">
+    <input type="email" placeholder="Email" [(ngModel)]="email">
+    <input type="password" placeholder="Senha" [(ngModel)]="senha">
+    <input type="password" placeholder="Confirmar senha" [(ngModel)]="confirmaSenha">
     <button class="btn-entrar" (click)="fazerCadastro()">Cadastrar</button>
   </div>
 

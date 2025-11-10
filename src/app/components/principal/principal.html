@@ -1,0 +1,72 @@
+<div class="container-principal">
+    <header class="barra-lateral">
+        <div class="logo-marca">
+            <h2>TasKon</h2>
+        </div>
+        <nav>
+            <ul class="list-nav">
+                <li><a href="principal.html">Home</a></li>
+                <li><a href="">Tarefas</a></li>
+                <li><a href="">Calendario</a></li>
+                <li><a href="">Produtividade</a></li>
+            </ul>
+        </nav>
+        <div class="caixa-chat">
+            <div class="chat">
+                <h3>
+                    Alguma dúvida?
+                </h3>
+                <p>
+                    Fale com os nossos assistentes
+                </p>
+                <input type="submit" class="btn-chat" value="Chat">
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <!-- Caixa de criação -->
+        <div class="task-container" *ngIf="criando">
+        <div class="cria-task" id="criar">
+            <div class="criar">
+            <input
+                type="text"
+                [(ngModel)]="novaTarefa"
+                placeholder="Adicione uma tarefa"
+            />
+            <button (click)="addFuncao()" class="fex">ad+</button>
+            <button (click)="fechar()" class="fex">fechar</button>
+            </div>
+        </div>
+        </div>
+
+        <!-- Lista de tarefas -->
+        <div class="painel-task">
+            <button class="criacao"  (click)="abrir()">Criar tarefa</button>
+
+            <ul class="pai-list">
+                <li *ngFor="let tarefa of tarefas; let i = index" class="lista">
+                    <span>{{ tarefa }}</span>
+                    <div id="dnt-list">
+                        <button class="editarBotao" (click)="editTask(i)">Editar</button>
+                        <button class="removerBotao" (click)="deleteTask(i)">Remover</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+    <aside class="lateral-dire">
+        <div class="pai-calendar">
+            <div class="calendaio">
+                calendario
+            </div>
+        </div>
+        
+        <div class="pai-produti">
+            <div class="produtividade">
+                produtividade
+            </div>
+        </div>
+    </aside>
+</div>

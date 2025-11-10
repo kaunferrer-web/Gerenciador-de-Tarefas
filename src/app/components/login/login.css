@@ -121,10 +121,11 @@ button {
 
 .painel-roxo {
   position: absolute;
-  box-shadow: 0 0 10px 5px #E9B3FB;
+  box-shadow: 0 0 10px 10px #E9B3FB;
   width: 50%;
   height: 100%;
-  background: linear-gradient(#3B0270, #6F00FF);
+  background: linear-gradient(#3B0270, #6F00FF
+  );
   color: white;
   right: 0;
   display: flex;
