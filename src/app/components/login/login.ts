@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule,} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   standalone:true,
@@ -10,6 +12,7 @@ import { RouterLink, Router } from '@angular/router';
   styleUrls: ['./login.css']
 })
 export class LoginComponent {
+  
   // kauan: parte inicial do login//
 
   nome: string = "";
@@ -38,13 +41,22 @@ export class LoginComponent {
       alert("SEJA BEM VINDO!!");
       this.router.navigate(['/home']);
       return;
-    } else {
+  } if (usuario.emal !== this.email)  {
       alert('Email ou senha incorretos!');
       return;
     }
-  } else {
-    alert('Nenhum usuário cadastrado!');
-    return;
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "INFORME UM E-MAIL VALIDO",
+        footer: '<a href="#"> ex: exemplo@gmail.com</a>',
+        customClass:{
+          popup: 'swal-alerta',
+          closeButton: 'swal-confirma'
+        }}
+      );
+      return;
   }
 }
 
@@ -54,15 +66,40 @@ export class LoginComponent {
     
     //Ademir: nao tava funcionando por conta da logica nas condicionais//
     if (!this.nome || !this.email || !this.senha || !this.confirmaSenha) {
-      alert("Preencha todas as informações");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Preencha todas as informações",
+        customClass:{
+          popup: 'swal-alerta',
+          closeButton: 'swal-confirma'
+        }}
+      );
       return;
     }
     if (!this.email.includes('@') || !this.email.includes('.com')){
-      alert("INFORME UM E-MAIL VALIDO, Ex: algo@gmail.com");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "INFORME UM E-MAIL VALIDO",
+        footer: '<a href="#"> ex: exemplo@gmail.com</a>',
+        customClass:{
+          popup: 'swal-alerta',
+          closeButton: 'swal-confirma'
+        }}
+      );
       return;
     }
     if(this.senha !== this.confirmaSenha) {
-      alert("AS SENHAS NÃO ESTÃO IGUAIS");
+      Swal.fire({
+        icon: "error",
+        title: "eita...",
+        text: "As senhas estão divergentes",
+        customClass:{
+          popup: 'swal-alerta',
+          closeButton: 'swal-confirma'
+        }}
+      );
       return;
     }
     const usuario ={

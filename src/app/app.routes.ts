@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login';
-import { Principal } from './components/principal/principal';
-import { NgModule } from '@angular/core';
+import { Principal } from './components/components/login/components/home/principal/principal';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
