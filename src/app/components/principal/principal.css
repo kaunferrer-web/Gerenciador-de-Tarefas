@@ -46,7 +46,7 @@ a:hover{
     box-shadow: 0 0 5px 2px hsl(284, 45%, 84%);
 }
 .logo-marca{
-    font-family: Arial, Helvetica, sans-serif ;
+    font-family: "Popins", sans-serif;
     color: #6F00FF;
     text-align: center;
     width: 100%;
@@ -189,6 +189,9 @@ main{
     flex-direction: column;
 }
 .pai-calendar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     border: 1px solid red;
     background: linear-gradient(#dec2e8, #fdf8ff);
@@ -200,4 +203,71 @@ main{
     background: linear-gradient(#dec2e8, #fdf8ff);
     width: 200px;
     height: 200px;
+}
+.task-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* ← Fundo escuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* ← Fica por cima de tudo */
+  animation: fadeIn 0.3s ease-in-out; /* ← Animação de entrada */
+}
+.cria-task {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  min-width: 400px;
+  max-width: 500px;
+  animation: slideDown 0.3s ease-in-out; /* ← Animação */
+}
+.criar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* ← Espaço entre elementos */
+}
+.criar input[type="text"]{
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e4e4e4;
+    border-radius: 8px;
+    font-size:16px;
+    outline: none;
+    transition: all 0.3s;
+}
+.fex {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.criar button:first-of-type {
+  background: linear-gradient(to right, #6F00FF, #9D4EDD);
+  color: white;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

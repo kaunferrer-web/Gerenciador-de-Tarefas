@@ -5,7 +5,7 @@
         </div>
         <nav>
             <ul class="list-nav">
-                <li><a href="principal.html">Home</a></li>
+                <li><img src="assets/imagens/home-icon.png" alt="icone de home page"><a href="principal.html">Home</a></li>
                 <li><a href="">Tarefas</a></li>
                 <li><a href="">Calendario</a></li>
                 <li><a href="">Produtividade</a></li>
@@ -34,8 +34,8 @@
                 [(ngModel)]="novaTarefa"
                 placeholder="Adicione uma tarefa"
             />
-            <button (click)="addFuncao()" class="fex">ad+</button>
-            <button (click)="fechar()" class="fex">fechar</button>
+            <button (click)="addFuncao()" class="fex">Criar</button>
+            <button (click)="fechar()" class="fex">Fechar</button>
             </div>
         </div>
         </div>
@@ -58,9 +58,7 @@
     </main>
     <aside class="lateral-dire">
         <div class="pai-calendar">
-            <div class="calendaio">
-                calendario
-            </div>
+            <app-calendario></app-calendario>
         </div>
         
         <div class="pai-produti">

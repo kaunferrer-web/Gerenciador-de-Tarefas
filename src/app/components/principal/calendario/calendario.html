@@ -1,0 +1,24 @@
+<div class="calendario">
+        <div class="header">
+            <button id="prev-btn" (click)="mesAnterior()">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="monthYear">{{mesAno}}</div>
+            <button (click)="proximoMes()" id="next-btn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="dias">
+            <div class="dia" *ngFor="let dia of diasDaSemana">{{dia}}</div>
+        </div>
+        <div class="datas">
+            <div 
+            *ngFor="let datas of diasDoMes" 
+            class="date"
+            [class.innactive]="!datas.ativo"
+            [class.active]="datas.hoje"
+            >
+            {{ datas.dia }}
+            </div>
+        </div>
+    </div>

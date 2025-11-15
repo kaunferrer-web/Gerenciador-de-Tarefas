@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Calendario } from './calendario/calendario';
 
 
 @Component({
   selector: 'app-principal',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Calendario],
   standalone:true,
   templateUrl: './principal.html',
   styleUrls: ['./principal.css'],
