@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Principal } from '../principal/principal';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,6 @@ import { Principal } from '../principal/principal';
 })
 export class LoginComponent {
 
-  // kauan: parte inicial do login //
   nome: string = "";
   email: string = "";
   senha: string = "";
@@ -28,7 +26,7 @@ export class LoginComponent {
     this.mostrandoLogin = !this.mostrandoLogin;
   }
 
-  // ademir: condições do login e cadastro //
+
   async fazerLogin() {
     const usuarioSalvo = localStorage.getItem('usuario');
 
@@ -44,8 +42,6 @@ export class LoginComponent {
             popup: 'swal-alerta',
             confirmButton: 'swal-confirma'
           },
-          background: 'transparent',
-          allowOutsideClick: false
         });
         this.router.navigate(['/home']);
         return;

@@ -39,11 +39,11 @@
             </div>
         </div>
         </div>
-
         <!-- Lista de tarefas -->
         <div class="painel-task">
-            <button class="criacao"  (click)="abrir()">Criar tarefa</button>
-
+            <div id="cucur">
+                <button class="criacao"  (click)="abrir()">Criar tarefa</button>
+            </div>
             <ul class="pai-list">
                 <li *ngFor="let tarefa of tarefas; let i = index" class="lista">
                     <span>{{ tarefa }}</span>
