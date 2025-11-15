@@ -1,6 +1,6 @@
 <div class="containerPai" [class.containerClicado]="!mostrandoLogin">
   
-  <!-- Formulário de Login -->
+  <!-- Login -->
   <div class="formulario form-login">
     <h2>Login</h2>
     <input name="email" type="email" placeholder="Email" [(ngModel)]="email">
@@ -10,7 +10,7 @@
     <button class="btn-entrar" (click)="fazerLogin()">Entrar</button>
   </div>
 
-  <!-- Formulário de Cadastro -->
+  <!-- Cadastro -->
   <div class="formulario form-cadastro">
     <h2>Cadastro</h2>
     <img src="" alt="">
@@ -24,6 +24,7 @@
   
   <!-- Painel Roxo -->
   <div class="painel-roxo">
+    <img src="/img/taskon.png" alt="Logotipo da Taskon" class="taskon-img">
     <div id="painel-texto">
       <h2>{{ mostrandoLogin ? 'Ainda não tem conta?' : 'Já tem conta?' }}</h2>
       <p>{{ mostrandoLogin ? 'Cadastre-se agora!' : 'Faça login!' }}</p>

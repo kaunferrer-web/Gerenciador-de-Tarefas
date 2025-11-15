@@ -97,7 +97,7 @@ main{
     flex: 1;
     display: flex;
     justify-content: center;
-    background: linear-gradient(#ffffff, hsl(273, 100%, 98%));
+    background: linear-gradient(#ebc1ff, hsl(273, 100%, 98%));
     width: 600px;
     border-radius: 20px;
 }
@@ -129,7 +129,7 @@ main{
     border-radius: 20px;
     width: 600px;
     height: 150px;
-    background: whitesmoke;
+    background: rgb(255, 255, 255);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #6F00FF;
     box-shadow: 0;
@@ -200,4 +200,11 @@ main{
     background: linear-gradient(#dec2e8, #fdf8ff);
     width: 200px;
     height: 200px;
+}
+#cucur{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 100%;
+    background: #e4e4e4;
 }
