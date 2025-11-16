@@ -12,7 +12,9 @@ import { Calendario } from './calendario/calendario';
   styleUrls: ['./principal.css'],
 })
 export class Principal {
-    tarefas: string[] = [];
+  
+
+  tarefas: string[] = [];
   novaTarefa: string = '';
   criando: boolean = false;
 

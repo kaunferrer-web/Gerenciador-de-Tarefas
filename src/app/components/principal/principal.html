@@ -1,14 +1,36 @@
 <div class="container-principal">
     <header class="barra-lateral">
         <div class="logo-marca">
-            <h2>TasKon</h2>
+            <img src="/img/taskon.png" alt="logo " class="logo-taskon">
         </div>
         <nav>
             <ul class="list-nav">
-                <li><img src="assets/imagens/home-icon.png" alt="icone de home page"><a href="principal.html">Home</a></li>
-                <li><a href="">Tarefas</a></li>
-                <li><a href="">Calendario</a></li>
-                <li><a href="">Produtividade</a></li>
+                <li>
+                    <a href="principal.html">
+                        <i class="bi bi-house-door-fill"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-clipboard-check"></i>
+
+                        Tarefas
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-calendar3"></i>
+                        Calendario
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-graph-up-arrow"></i>
+
+                        Produtividade
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="caixa-chat">
@@ -27,21 +49,22 @@
     <main>
         <!-- Caixa de criação -->
         <div class="task-container" *ngIf="criando">
-        <div class="cria-task" id="criar">
-            <div class="criar">
-            <input
-                type="text"
-                [(ngModel)]="novaTarefa"
-                placeholder="Adicione uma tarefa"
-            />
-            <button (click)="addFuncao()" class="fex">Criar</button>
-            <button (click)="fechar()" class="fex">Fechar</button>
+            <div class="cria-task" id="criar">
+                <div class="criar">
+                <input
+                    type="text"
+                    [(ngModel)]="novaTarefa"
+                    placeholder="Adicione uma tarefa"
+                />
+                <button (click)="addFuncao()" class="fex">Criar</button>
+                <button (click)="fechar()" class="fex">Fechar</button>
+                </div>
             </div>
         </div>
-        </div>
+
         <!-- Lista de tarefas -->
         <div class="painel-task">
-            <div id="cucur">
+            <div class="caixa-criacao-btn">
                 <button class="criacao"  (click)="abrir()">Criar tarefa</button>
             </div>
             <ul class="pai-list">
