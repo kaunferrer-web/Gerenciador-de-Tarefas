@@ -25,12 +25,14 @@ nav{
 .list-nav{
     display: flex;
     justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    height: 250px;
+
 }
-li {
+.list-nav li {
     list-style: none;
-    gap: 20px;
 
 }
 a{
@@ -256,10 +258,11 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: whitesmoke;
+    background: white;
     height: 150px;
     width: 100%;
-    border-left: 1px solid #c395ff;
+    border-left: 1px solid #efefef;
+    border-right: 1px solid #efefef;
     margin-bottom: 20px;
 }
 .criar input[type="text"]{
@@ -304,4 +307,9 @@ main{
 }
 .logo-taskon{
     width: 200px;
+}
+.name-calendar{
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
