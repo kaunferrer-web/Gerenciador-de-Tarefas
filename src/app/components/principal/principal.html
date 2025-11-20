@@ -14,7 +14,6 @@
                 <li>
                     <a href="">
                         <i class="bi bi-clipboard-check"></i>
-
                         Tarefas
                     </a>
                 </li>
@@ -27,7 +26,6 @@
                 <li>
                     <a href="">
                         <i class="bi bi-graph-up-arrow"></i>
-
                         Produtividade
                     </a>
                 </li>
@@ -47,15 +45,12 @@
 
     </header>
     <main>
+
         <!-- Caixa de criação -->
         <div class="task-container" *ngIf="criando">
             <div class="cria-task" id="criar">
                 <div class="criar">
-                <input
-                    type="text"
-                    [(ngModel)]="novaTarefa"
-                    placeholder="Adicione uma tarefa"
-                />
+                <input type="text" [(ngModel)]="novaTarefa" placeholder="Adicione uma tarefa"/>
                 <button (click)="addFuncao()" class="fex">Criar</button>
                 <button (click)="fechar()" class="fex">Fechar</button>
                 </div>
@@ -67,19 +62,33 @@
             <div class="caixa-criacao-btn">
                 <button class="criacao"  (click)="abrir()">Criar tarefa</button>
             </div>
+
             <ul class="pai-list">
                 <li *ngFor="let tarefa of tarefas; let i = index" class="lista">
-                    <span>{{ tarefa }}</span>
+                    <span>{{ tarefa.titulo }}</span>
+
                     <div id="dnt-list">
+                        <!-- Botões de status -->
+                        <button class="editarBotao" (click)="alterarStatus(i, 'pendente')">
+                            Pendente
+                        </button>
+                        <button class="editarBotao" (click)="alterarStatus(i, 'andamento')">
+                            Andamento
+                        </button>
+                        <button class="editarBotao" (click)="alterarStatus(i, 'concluida')">
+                            Concluída
+                        </button>
+
                         <button class="editarBotao" (click)="editTask(i)">Editar</button>
                         <button class="removerBotao" (click)="deleteTask(i)">Remover</button>
                     </div>
                 </li>
             </ul>
         </div>
-
     </main>
+
     <aside class="lateral-dire">
+
         <div>
             <div class="name-calendar">
                 <h4>
@@ -90,11 +99,21 @@
                 <app-calendario></app-calendario>
             </div>
         </div>
-        
-        <div class="pai-produti">
-            <div class="produtividade">
-                produtividade
+
+        <div>
+            <div class=" name-produti">
+                <h4>
+                    Produtividade
+                </h4>
+            </div>
+            <div class="pai-produti">
+                <app-produtividade
+                    [pendente]="qtdPendente"
+                    [andamento]="qtdAndamento"
+                    [concluida]="qtdConcluida">
+                </app-produtividade>
             </div>
         </div>
+
     </aside>
 </div>
