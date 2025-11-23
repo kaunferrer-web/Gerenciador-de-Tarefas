@@ -15,7 +15,9 @@ export class Principal {
   
 
   tarefas: string[] = [];
+  datatask: string[] = [];
   novaTarefa: string = '';
+  novaData: string = '';
   criando: boolean = false;
 
   // Abre a caixa de criação
@@ -34,6 +36,12 @@ export class Principal {
     if (tarefa !== '') {
       this.tarefas.push(tarefa);
       this.novaTarefa = '';
+      this.criando = false;
+    }
+    const datatask = this.novaData.trim();
+    if (datatask !== ''){
+      this.datatask.push(datatask);
+      this.novaData = '';
       this.criando = false;
     }
   }
