@@ -2,61 +2,99 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Calendario } from './calendario/calendario';
+import { Produtividade } from '../produtividade/produtividade';
 
+interface Tarefa {
+  titulo: string;
+  data?: string;
+  status: 'pendente' | 'andamento' | 'concluida';
+}
 
 @Component({
   selector: 'app-principal',
-  imports: [CommonModule, FormsModule, Calendario],
-  standalone:true,
+  standalone: true,
+  imports: [CommonModule, FormsModule, Calendario, Produtividade],
   templateUrl: './principal.html',
   styleUrls: ['./principal.css'],
 })
-export class Principal {
-  
 
-  tarefas: string[] = [];
+
+export class Principal {
+
+  tarefas: Tarefa[] = [];
   datatask: string[] = [];
   novaTarefa: string = '';
   novaData: string = '';
   criando: boolean = false;
+  statustarefas: {
+    titulo: string,
+    status: 'pendente' | 'andamento' | 'concluida'
+  }[] = [];
 
-  // Abre a caixa de criação
-  abrir() {
-    this.criando = true;
+  qtdPendente = 0;
+  qtdAndamento = 0;
+  qtdConcluida = 0;
+
+  abrir() { 
+    this.criando = true; 
   }
 
-  // Fecha a caixa de criação
-  fechar() {
-    this.criando = false;
+  fechar() { 
+    this.criando = false; 
   }
 
-  // Adiciona nova tarefa
+  // Criar tarefa
   addFuncao() {
-    const tarefa = this.novaTarefa.trim();
-    if (tarefa !== '') {
-      this.tarefas.push(tarefa);
-      this.novaTarefa = '';
-      this.criando = false;
-    }
-    const datatask = this.novaData.trim();
-    if (datatask !== ''){
-      this.datatask.push(datatask);
-      this.novaData = '';
-      this.criando = false;
-    }
-  }
+  const titulo = this.novaTarefa.trim();
+  const data = this.novaData.trim();
 
-  // Edita tarefa existente
-  editTask(index: number) {
-    const nvtexto = prompt('Editar tarefa:', this.tarefas[index]);
-    if (nvtexto !== null && nvtexto.trim() !== '') {
-      this.tarefas[index] = nvtexto.trim();
-    }
-  }
+  if (titulo === '') return;
 
-  // Remove tarefa
-  deleteTask(index: number) {
-    this.tarefas.splice(index, 1);
-  }
+  this.tarefas.push({
+    titulo,
+    data: data || undefined,
+    status: 'pendente'
+  });
+
+  this.novaTarefa = '';
+  this.novaData = '';
+  this.criando = false;
+
+  this.atualizarContadores();
 }
 
+
+  // editar a tarefa
+  editTask(index: number) {
+    const novoTexto = prompt('Editar tarefa:', this.tarefas[index].titulo);
+    if (novoTexto !== null && novoTexto.trim() !== '') {
+      this.tarefas[index].titulo = novoTexto.trim();
+      this.atualizarContadores();
+    }
+  }
+
+  // remover tarefa
+  deleteTask(index: number) {
+    this.tarefas.splice(index, 1);
+    this.atualizarContadores();
+  }
+
+  // Alterar status da tarefa
+  alterarStatus(index: number, novoStatus: 'pendente' | 'andamento' | 'concluida') {
+    this.tarefas[index].status = novoStatus;
+    this.atualizarContadores();
+  }
+
+  // Atualiza os valores do gráfico
+  atualizarContadores() {
+    this.qtdPendente = this.tarefas.filter(t => t.status === 'pendente').length;
+    this.qtdAndamento = this.tarefas.filter(t => t.status === 'andamento').length;
+    this.qtdConcluida = this.tarefas.filter(t => t.status === 'concluida').length;
+
+    console.log('Contadores atualizados:', {
+      pendente: this.qtdPendente,
+      andamento: this.qtdAndamento,
+      concluida: this.qtdConcluida
+    });
+  }
+}

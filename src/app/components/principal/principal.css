@@ -29,8 +29,8 @@ nav{
     align-items: center;
     flex-direction: column;
     height: 250px;
-
 }
+
 .list-nav li {
     list-style: none;
 
@@ -156,7 +156,7 @@ main{
 .lista:hover{
     box-shadow: 0 0 10px 1px #c395ff;
     border-left: 5px solid #6F00FF;
-    transform: translateY(-2px); /* ← ADICIONE: levanta um pouco */
+    transform: translateY(-2px);
     z-index: 10;
 }
 #dnt-list{
@@ -247,12 +247,12 @@ main{
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   min-width: 400px;
   max-width: 500px;
-  animation: slideDown 0.3s ease-in-out; /* ← Animação */
+  animation: slideDown 0.4s ease-in-out;
 }
 .criar {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* ← Espaço entre elementos */
+  gap: 15px;
 }
 .caixa-criacao-btn{
     display: flex;
@@ -309,6 +309,12 @@ main{
     width: 200px;
 }
 .name-calendar{
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.name-produti{
     height: 50px;
     display: flex;
     align-items: center;
