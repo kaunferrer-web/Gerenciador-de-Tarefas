@@ -1,9 +1,36 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login';
+
+import { Layout } from './components/layout/layout';
 import { Principal } from './components/principal/principal';
+import { LoginComponent } from './pages/login/login'; 
+import { Historico } from './components/historico/historico';
+
+const authGuard = () => {
+  const estaLogado = true; 
+  
+  if (estaLogado) {
+    return true;
+  }
+  return false;
+};
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  { path: '', redirectTo: 'layout', pathMatch: 'full' }, 
+  
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: Principal }
+  {
+    path: 'layout',
+    component: Layout,
+    canActivate: [authGuard], 
+    children: [
+      { path: 'home', component: Principal },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {path: 'historico', component: Historico}
+
+    ]
+  },
+  
+
+  { path: '**', redirectTo: 'layout' }
 ];

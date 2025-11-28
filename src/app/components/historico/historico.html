@@ -1,0 +1,21 @@
+<div class="historico-box">
+  <h2>Histórico</h2>
+
+  <div *ngIf="historico.length === 0" class="vazio">
+    Nenhuma tarefa no histórico.
+  </div>
+
+  <ul *ngIf="historico.length > 0" class="lista-historico">
+    <li *ngFor="let t of historico; let i = index" class="item">
+      <div class="info">
+        <span class="titulo">{{ t.titulo }}</span>
+        <span class="data" *ngIf="t.data">({{ t.data }})</span>
+        <span class="status">{{ t.status }}</span>
+      </div>
+      <div class="acoes">
+        <button (click)="restaurar(i)">Restaurar</button>
+        <button (click)="apagar(i)">Apagar</button>
+      </div>
+    </li>
+  </ul>
+</div>

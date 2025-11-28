@@ -3,12 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Calendario } from './calendario/calendario';
 import { Produtividade } from '../produtividade/produtividade';
+import { Router } from '@angular/router';
 
-interface Tarefa {
-  titulo: string;
-  data?: string;
-  status: 'pendente' | 'andamento' | 'concluida';
-}
+import { TarefaService, Tarefa } from '../../services/tarefa-service';
 
 @Component({
   selector: 'app-principal',
@@ -17,84 +14,74 @@ interface Tarefa {
   templateUrl: './principal.html',
   styleUrls: ['./principal.css'],
 })
-
-
 export class Principal {
-
-  tarefas: Tarefa[] = [];
-  datatask: string[] = [];
-  novaTarefa: string = '';
-  novaData: string = '';
-  criando: boolean = false;
-  statustarefas: {
-    titulo: string,
-    status: 'pendente' | 'andamento' | 'concluida'
-  }[] = [];
+  novaTarefa = '';
+  novaData = '';
+  criando = false;
 
   qtdPendente = 0;
   qtdAndamento = 0;
   qtdConcluida = 0;
 
-  abrir() { 
-    this.criando = true; 
+  constructor(private tarefaService: TarefaService, private router: Router) {}
+
+  menuAberto: number | null = null;
+
+  toggleMenu(i: number) {
+    this.menuAberto = this.menuAberto === i ? null : i;
   }
 
-  fechar() { 
-    this.criando = false; 
+
+  get tarefas(): Tarefa[] {
+    return this.tarefaService.getTarefas();
   }
 
-  // Criar tarefa
+  abrir() { this.criando = true; }
+  fechar() { this.criando = false; }
+
   addFuncao() {
-  const titulo = this.novaTarefa.trim();
-  const data = this.novaData.trim();
+    const titulo = this.novaTarefa.trim();
+    const data = this.novaData.trim();
+    if (!titulo) return;
 
-  if (titulo === '') return;
+    this.tarefaService.addTarefa({ titulo, data: data || undefined, status: 'pendente' });
+    this.novaTarefa = '';
+    this.novaData = '';
+    this.criando = false;
+    this.atualizarContadores();
+  }
 
-  this.tarefas.push({
-    titulo,
-    data: data || undefined,
-    status: 'pendente'
-  });
-
-  this.novaTarefa = '';
-  this.novaData = '';
-  this.criando = false;
-
-  this.atualizarContadores();
-}
-
-
-  // editar a tarefa
   editTask(index: number) {
-    const novoTexto = prompt('Editar tarefa:', this.tarefas[index].titulo);
-    if (novoTexto !== null && novoTexto.trim() !== '') {
-      this.tarefas[index].titulo = novoTexto.trim();
-      this.atualizarContadores();
-    }
+    const novo = prompt('Editar tarefa', this.tarefas[index].titulo);
+    if (!novo) return;
+    this.tarefaService.editarTarefa(index, novo.trim());
+    this.atualizarContadores();
   }
 
-  // remover tarefa
+  // Mudar: ao remover, mover para histórico e navegar para a rota de histórico
   deleteTask(index: number) {
-    this.tarefas.splice(index, 1);
+    const titulo = this.tarefas[index]?.titulo;
+    if (!titulo) return;
+
+    // mover para histórico (salva lá)
+    this.tarefaService.moverParaHistorico(index);
+
+    // atualizar contadores locais
+    this.atualizarContadores();
+
+    // navegar para histórico (rota absoluta; se preferir relativa, use outra forma)
+    this.router.navigate(['/layout/historico']);
+  }
+
+  alterarStatus(index: number, novoStatus: Tarefa['status']) {
+    this.tarefaService.mudarStatus(index, novoStatus);
     this.atualizarContadores();
   }
 
-  // Alterar status da tarefa
-  alterarStatus(index: number, novoStatus: 'pendente' | 'andamento' | 'concluida') {
-    this.tarefas[index].status = novoStatus;
-    this.atualizarContadores();
-  }
-
-  // Atualiza os valores do gráfico
   atualizarContadores() {
-    this.qtdPendente = this.tarefas.filter(t => t.status === 'pendente').length;
-    this.qtdAndamento = this.tarefas.filter(t => t.status === 'andamento').length;
-    this.qtdConcluida = this.tarefas.filter(t => t.status === 'concluida').length;
-
-    console.log('Contadores atualizados:', {
-      pendente: this.qtdPendente,
-      andamento: this.qtdAndamento,
-      concluida: this.qtdConcluida
-    });
+    const list = this.tarefas;
+    this.qtdPendente = list.filter((t: Tarefa) => t.status === 'pendente').length;
+    this.qtdAndamento = list.filter((t: Tarefa) => t.status === 'andamento').length;
+    this.qtdConcluida = list.filter((t: Tarefa) => t.status === 'concluida').length;
   }
 }

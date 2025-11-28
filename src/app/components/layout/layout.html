@@ -1,0 +1,79 @@
+<div class="container-principal">
+    <header class="barra-lateral">
+        <div class="logo-marca">
+            <img src="/img/taskon.png" alt="logo " class="logo-taskon">
+        </div>
+        <nav>
+            <ul class="list-nav">
+                <li>
+                    <a routerLink="home">
+                        <i class="bi bi-house-door-fill"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="historico">
+                        <i class="bi bi-clipboard-check"></i>
+                        Histórico
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-calendar3"></i>
+                        Calendario
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        Produtividade
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="caixa-chat">
+            <div class="chat">
+                <h3>
+                    Alguma dúvida?
+                </h3>
+                <p>
+                    Fale com os nossos assistentes
+                </p>
+                <input type="submit" class="btn-chat" value="Chat">
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    <aside class="lateral-dire">
+
+        <div>
+            <div class="name-calendar">
+                <h4>
+                    Calendario
+                </h4>
+            </div>
+            <div class="pai-calendar">
+                <app-calendario></app-calendario>
+            </div>
+        </div>
+
+        <div>
+            <div class=" name-produti">
+                <h4>
+                    Produtividade
+                </h4>
+            </div>
+            <div class="pai-produti">
+                <app-produtividade
+                    [pendente]="qtdPendente"
+                    [andamento]="qtdAndamento"
+                    [concluida]="qtdConcluida">
+                </app-produtividade>
+            </div>
+        </div>
+
+    </aside>
+</div>
