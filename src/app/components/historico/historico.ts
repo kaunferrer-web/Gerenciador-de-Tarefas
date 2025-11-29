@@ -12,13 +12,13 @@ import { TarefaService, Tarefa } from '../../services/tarefa-service';
 export class Historico {
   constructor(public tarefaService: TarefaService) {}
 
-  // excluir do histórico permanentemente
+  // Kauan: excluir do histórico permanentemente
   apagar(index: number) {
     if (!confirm('Apagar este registro do histórico?')) return;
     this.tarefaService.removerHistorico(index);
   }
 
-  // opcional: restaurar ao quadro de tarefas
+  // Kauan: restaurar ao quadro de tarefas
   restaurar(index: number) {
     this.tarefaService.restaurarDoHistorico(index);
   }

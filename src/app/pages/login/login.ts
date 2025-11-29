@@ -28,6 +28,8 @@ export class LoginComponent {
 
 
   async fazerLogin() {
+
+    //Ademir: validações de login com alertas Swal.fire
     const usuarioSalvo = localStorage.getItem('usuario');
 
     if (usuarioSalvo) {

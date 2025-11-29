@@ -20,14 +20,10 @@ export const routes: Routes = [
   
   { path: '', component: LoginComponent },
   {
-    path: 'layout',
-    component: Layout,
-    canActivate: [authGuard], 
-    children: [
+    path: 'layout', component: Layout, canActivate: [authGuard], children: [
       { path: 'home', component: Principal },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       {path: 'historico', component: Historico}
-
     ]
   },
   
