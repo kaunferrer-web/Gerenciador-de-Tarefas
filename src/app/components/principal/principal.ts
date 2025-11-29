@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Calendario } from './calendario/calendario';
-import { Produtividade } from '../produtividade/produtividade';
 import { Router } from '@angular/router';
 
 import { TarefaService, Tarefa } from '../../services/tarefa-service';
@@ -10,7 +8,7 @@ import { TarefaService, Tarefa } from '../../services/tarefa-service';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [CommonModule, FormsModule, Calendario, Produtividade],
+  imports: [CommonModule, FormsModule],
   templateUrl: './principal.html',
   styleUrls: ['./principal.css'],
 })
@@ -19,9 +17,9 @@ export class Principal {
   novaData = '';
   criando = false;
 
-  qtdPendente = 0;
-  qtdAndamento = 0;
-  qtdConcluida = 0;
+  pendente = 0;
+  andamento = 0;
+  concluida = 0;
 
   constructor(private tarefaService: TarefaService, private router: Router) {}
 
@@ -80,8 +78,8 @@ export class Principal {
 
   atualizarContadores() {
     const list = this.tarefas;
-    this.qtdPendente = list.filter((t: Tarefa) => t.status === 'pendente').length;
-    this.qtdAndamento = list.filter((t: Tarefa) => t.status === 'andamento').length;
-    this.qtdConcluida = list.filter((t: Tarefa) => t.status === 'concluida').length;
+    this.pendente = list.filter((t: Tarefa) => t.status === 'pendente').length;
+    this.andamento = list.filter((t: Tarefa) => t.status === 'andamento').length;
+    this.concluida = list.filter((t: Tarefa) => t.status === 'concluida').length;
   }
 }

@@ -35,21 +35,21 @@ export class TarefaService {
     if (this.tarefas[index]) this.tarefas[index].status = status;
   }
 
-  // NOVO: move tarefa do array de tarefas para o histórico
+  // Kauan: move tarefa do array de tarefas para o histórico
   moverParaHistorico(index: number) {
     if (index < 0 || index >= this.tarefas.length) return;
     const t = this.tarefas[index];
-    // opcional: adicionar timestamp no objeto ou outra propriedade
+
     this.historico.push({ ...t });
     this.tarefas.splice(index, 1);
   }
 
-  // remover do histórico permanentemente
+  // kauan: remover do histórico permanentemente
   removerHistorico(index: number) {
     if (index >= 0 && index < this.historico.length) this.historico.splice(index, 1);
   }
 
-  // opcional: restaurar do histórico para tarefas
+  // Kauan: restaurar do histórico para tarefas
   restaurarDoHistorico(index: number) {
     if (index < 0 || index >= this.historico.length) return;
     const t = this.historico[index];

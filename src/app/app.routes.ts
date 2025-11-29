@@ -16,9 +16,9 @@ const authGuard = () => {
 
 export const routes: Routes = [
 
-  { path: '', redirectTo: 'layout', pathMatch: 'full' }, 
+  { path: 'home', redirectTo: 'layout', pathMatch: 'full' }, 
   
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   {
     path: 'layout',
     component: Layout,

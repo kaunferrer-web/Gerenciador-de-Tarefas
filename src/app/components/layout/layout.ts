@@ -1,14 +1,8 @@
+import { Tarefa, TarefaService } from './../../services/tarefa-service';
 import { Component } from '@angular/core';
 import { Produtividade } from '../produtividade/produtividade';
 import { Calendario } from '../principal/calendario/calendario';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
-interface Tarefa {
-  titulo: string;
-  data?: string;
-  status: 'pendente' | 'andamento' | 'concluida';
-}
-
 
 @Component({
   selector: 'app-layout',
@@ -18,80 +12,24 @@ interface Tarefa {
   styleUrl: './layout.css',
 })
 export class Layout {
-  tarefas: Tarefa[] = [];
-  datatask: string[] = [];
-  novaTarefa: string = '';
-  novaData: string = '';
-  criando: boolean = false;
-  statustarefas: {
-    titulo: string,
-    status: 'pendente' | 'andamento' | 'concluida'
-  }[] = [];
 
-  qtdPendente = 0;
-  qtdAndamento = 0;
-  qtdConcluida = 0;
+  //Ademir: construtor para as atividades e a tualização do grafico de acordo com as task 
+  constructor(private Tarefa: TarefaService) {}
 
-  abrir() { 
-    this.criando = true; 
+  get tarefas(){
+    return this.Tarefa.getTarefas();
   }
 
-  fechar() { 
-    this.criando = false; 
+  get pendente() {
+    return this.tarefas.filter(t => t.status === 'pendente').length;
   }
 
-  // Criar tarefa
-  addFuncao() {
-  const titulo = this.novaTarefa.trim();
-  const data = this.novaData.trim();
-
-  if (titulo === '') return;
-
-  this.tarefas.push({
-    titulo,
-    data: data || undefined,
-    status: 'pendente'
-  });
-
-  this.novaTarefa = '';
-  this.novaData = '';
-  this.criando = false;
-
-  this.atualizarContadores();
-}
-
-
-  // editar a tarefa
-  editTask(index: number) {
-    const novoTexto = prompt('Editar tarefa:', this.tarefas[index].titulo);
-    if (novoTexto !== null && novoTexto.trim() !== '') {
-      this.tarefas[index].titulo = novoTexto.trim();
-      this.atualizarContadores();
-    }
+  get andamento() {
+    return this.tarefas.filter(t => t.status === 'andamento').length;
   }
 
-  // remover tarefa
-  deleteTask(index: number) {
-    this.tarefas.splice(index, 1);
-    this.atualizarContadores();
+  get concluida() {
+    return this.tarefas.filter(t => t.status === 'concluida').length;
   }
 
-  // Alterar status da tarefa
-  alterarStatus(index: number, novoStatus: 'pendente' | 'andamento' | 'concluida') {
-    this.tarefas[index].status = novoStatus;
-    this.atualizarContadores();
-  }
-
-  // Atualiza os valores do gráfico
-  atualizarContadores() {
-    this.qtdPendente = this.tarefas.filter(t => t.status === 'pendente').length;
-    this.qtdAndamento = this.tarefas.filter(t => t.status === 'andamento').length;
-    this.qtdConcluida = this.tarefas.filter(t => t.status === 'concluida').length;
-
-    console.log('Contadores atualizados:', {
-      pendente: this.qtdPendente,
-      andamento: this.qtdAndamento,
-      concluida: this.qtdConcluida
-    });
-  }
 }
